@@ -11,10 +11,10 @@ export class AdminGards implements CanActivate {
     }
     
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        if( localStorage.getItem('rolle')==='admin') {
+        if( window.localStorage.getItem('rolle')==='admin') {
             return true;
         } else {
-            localStorage.clear();
+            window.localStorage.clear();
             this.router.navigate(['/login']);
             return false;
         }

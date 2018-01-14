@@ -35,13 +35,13 @@ export class AuthServices {
     }
 
     isAdmin() {
-        return localStorage.getItem('rolle')==='admin'
+        return window.localStorage.getItem('rolle')==='admin'
     }
 
     successLogin(data) {
-        localStorage.setItem('token', data['token'])
-        localStorage.setItem('username', data['user'].username)
-        localStorage.setItem('rolle', 'admin')
+        window.localStorage.setItem('token', data['token'])
+        window.localStorage.setItem('username', data['user'].username)
+        window.localStorage.setItem('rolle', 'admin')
         this.flashMsg.show('Успешно влязахте в профила си', { cssClass: 'alert-success', timeout: 3000 } )
         this.router.navigate(['goran'])
     }

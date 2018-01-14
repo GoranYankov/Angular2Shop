@@ -17,7 +17,7 @@ export class ProductServices {
           private flashMsg: FlashMessagesService  ) {}
 
     addProduct(body):Observable<Object>{;
-        let token = localStorage.getItem('token');
+        let token = window.localStorage.getItem('token');
         let httpUrl:string = url.http + url.addProduct;
         let headers = new HttpHeaders({
             'Access-Control-Allow-Origin': "http://localhost:4200",
@@ -44,7 +44,7 @@ export class ProductServices {
     }
 
     getAllProducts():Observable<Object> {
-        let token = localStorage.getItem('token');
+        let token = window.localStorage.getItem('token');
         let httpUrl:string = url.http + url.getAllProduct;
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ export class ProductServices {
     }
 
     deleteProduct(body):Observable<Object> {
-        let token = localStorage.getItem('token');
+        let token = window.localStorage.getItem('token');
         let httpUrl:string = url.http + url.deleteProduct;
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ export class ProductServices {
         return this.http.post(httpUrl, body, {headers:headers});
     }
     updateProduct(body):Observable<Object> {
-        let token = localStorage.getItem('token');
+        let token = window.localStorage.getItem('token');
         let httpUrl:string = url.http + url.updateProduct;
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',

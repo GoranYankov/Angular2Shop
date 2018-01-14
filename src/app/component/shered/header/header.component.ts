@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    localStorage.clear();
+    window.localStorage.clear();
     this.router.navigate(['']);
     this.msg.show('Успешно се отписахте от системата', { cssClass: 'alert-success', timeout: 3000 } )
   }

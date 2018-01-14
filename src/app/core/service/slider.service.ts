@@ -19,7 +19,7 @@ export class SliderServices {
     }
 
     setSlider(body):Observable<Object>{
-         let token = localStorage.getItem('token');
+         let token = window.localStorage.getItem('token');
         let httpUrl:string = url.http + url.setSlider;
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ export class SliderServices {
     }
 
     remove(body):Observable<Object>{
-        let token = localStorage.getItem('token');
+        let token = window.localStorage.getItem('token');
        let httpUrl:string = url.http + url.remove;
        let headers = new HttpHeaders({
            'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ export class SliderServices {
    }
 
   update(body):Observable<Object>{
-    let token = localStorage.getItem('token');
+    let token = window.localStorage.getItem('token');
    let httpUrl:string = url.http + url.update;
    let headers = new HttpHeaders({
        'Content-Type': 'application/json',

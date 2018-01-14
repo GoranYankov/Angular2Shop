@@ -1,7 +1,8 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ServicesModule } from './core/service/services.module';
 import { SheredComponentModule } from './component/shered/shered.module';
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
@@ -45,6 +46,7 @@ import { NgHttpLoaderServicesModule } from 'ng-http-loader/services/ng-http-load
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'angular-site' }),
+    BrowserTransferStateModule,
     HttpClientModule,
     ServicesModule,
     SheredComponentModule,

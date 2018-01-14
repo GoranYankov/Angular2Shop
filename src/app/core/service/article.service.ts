@@ -17,7 +17,7 @@ export class ArticleServices {
           private flashMsg: FlashMessagesService  ) {}
 
     addArticle(body):Observable<Object>{
-        let token = localStorage.getItem('token');
+        let token = window.localStorage.getItem('token');
         let httpUrl:string = url.http + url.addArticle;
         let headers = new HttpHeaders({
             'Access-Control-Allow-Origin': "http://localhost:4200",
@@ -52,7 +52,7 @@ export class ArticleServices {
     }
 
     deleteArticle(body):Observable<Object> {
-        let token = localStorage.getItem('token');
+        let token = window.localStorage.getItem('token');
         let httpUrl:string = url.http + url.deleteArticle;
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ export class ArticleServices {
     }
 
     updateArticle(body):Observable<Object> {
-        let token = localStorage.getItem('token');
+        let token = window.localStorage.getItem('token');
         let httpUrl:string = url.http + url.updateArticle;
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',

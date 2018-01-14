@@ -27,7 +27,7 @@ export class OrderServices {
     }
 
     allOrders(body):Observable<Object>{
-        let token = localStorage.getItem('token');
+        let token = window.localStorage.getItem('token');
         let httpUrl:string = url.http + url.allOrders;
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ export class OrderServices {
     }
     
     editOrderStatus(body):Observable<Object>{
-        let token = localStorage.getItem('token');
+        let token = window.localStorage.getItem('token');
         let httpUrl:string = url.http + url.editOrderStatus;
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ export class OrderServices {
     }
 
     allOrdersToday():Observable<Object>{
-        let token = localStorage.getItem('token');
+        let token = window.localStorage.getItem('token');
         let httpUrl:string = url.http + url.allOrdersToday;
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ export class OrderServices {
     }
 
     allOrdersThisMonth():Observable<Object>{
-        let token = localStorage.getItem('token');
+        let token = window.localStorage.getItem('token');
         let httpUrl:string = url.http + url.allOrdersThisMonth;
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',

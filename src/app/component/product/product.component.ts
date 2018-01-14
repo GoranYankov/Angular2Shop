@@ -34,15 +34,9 @@ export class ProductComponent implements OnInit {
     private redirect: Router,
     private msg: FlashMessagesService,
     private seo: SeoServices,
-  ) { }
-
-
-  ngOnInit() {
-    window.scrollTo(0, 0)
-    this.orderForm = new FastOrderFormModel('','','','','Адрес','');
+  ) {
     let url = this.router.snapshot.params['url'];
     this.http.getSinelProduct({'url':url}).subscribe(product=>{
-     
       if(product['success']) {
           this.findProduct = true;
           this.product = product['product'];
@@ -50,6 +44,12 @@ export class ProductComponent implements OnInit {
           this.orderPrice = this.product['price'] + this.delviaryPrice;
       } 
     })
+   }
+
+
+  ngOnInit() {
+    window.scrollTo(0, 0)
+    this.orderForm = new FastOrderFormModel('','','','','Адрес','');
    
   }
 
