@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleServices } from '../../../core/service/article.service';
 import { SeoServices } from '../../../core/service/seo.service';
+import { Meta, Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'app-singel-article',
@@ -18,9 +19,11 @@ export class SingelArticleComponent implements OnInit {
   constructor(
         private router: ActivatedRoute, 
         private http:ArticleServices,
-        private seo: SeoServices
+        private seo: SeoServices,
+        private title: Title,
       
       ) {      
+        this.title.setTitle('My Spiffy Home Page');
     let url = this.router.snapshot.params['url'];
     this.http.singlArticle({url:url}).subscribe(article=>{
       if(article['success']) {
