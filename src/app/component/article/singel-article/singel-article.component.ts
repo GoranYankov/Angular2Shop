@@ -20,11 +20,7 @@ export class SingelArticleComponent implements OnInit {
         private http:ArticleServices,
         private seo: SeoServices
       
-      ) { }
-
-  ngOnInit() {
-    window.scrollTo(0, 0)
-    
+      ) {      
     let url = this.router.snapshot.params['url'];
     this.http.singlArticle({url:url}).subscribe(article=>{
       if(article['success']) {
@@ -34,6 +30,11 @@ export class SingelArticleComponent implements OnInit {
     }
 
     })
+       }
+
+  ngOnInit() {
+    window.scrollTo(0, 0)
+
     
   }
 
