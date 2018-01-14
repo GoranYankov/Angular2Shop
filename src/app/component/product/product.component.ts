@@ -41,6 +41,7 @@ export class ProductComponent implements OnInit {
           this.findProduct = true;
           this.product = product['product'];
           this.seo.changeTitle(this.product['type'] + ' ' + this.product['title'] + ' - Магазин Красота и Здраве')
+          this.seo.addFbMeta(product['product']["type"] + ' ' + product['product']["title"] +  ' - Магазин Красота и Здраве' , product['product']['description'], product['product']['img'], window.location.href);    
           this.orderPrice = this.product['price'] + this.delviaryPrice;
       } 
     })

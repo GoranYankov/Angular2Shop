@@ -4,5 +4,7 @@ export class ArticleFormModel {
         public img: String,
         public url:String,
         public body:String,
+        public keywordsString: String,
+        public description: String,
     ) {}
 }

@@ -26,7 +26,6 @@ export class NewArticleComponent implements OnInit {
   ngOnInit() {
     this.seo.changeTitle('Добавяне на статия')
     window.scrollTo(0, 0)
-    
     this.loadePage();
   }
 
@@ -41,7 +40,7 @@ export class NewArticleComponent implements OnInit {
 
   onEdit() {
       this.addArticle = !this.addArticle;
-      this.articleForm = new  ArticleFormModel('', '', '', '');
+      this.articleForm = new  ArticleFormModel('', '', '', '', '', '');
   }
 
   @Output() changeView: EventEmitter<any> = new EventEmitter();
@@ -79,7 +78,7 @@ export class NewArticleComponent implements OnInit {
     for (let article of this.articles) {
       if(article._id === e.target.id)  {
         article.body = article.paragraph.join('\n\n')
-        this.articleForm = new ArticleFormModel(article.title,article.img, article.url, article.body);
+        this.articleForm = new ArticleFormModel(article.title,article.img, article.url, article.body, article.keywordsString, article.description);
         this.articleForm['id'] = e.target.id;
       }
 
@@ -87,7 +86,7 @@ export class NewArticleComponent implements OnInit {
   }
 
   updateArticle() {
-    this.articleForm['paragraphbody'] = this.articleForm.body.split('\n').map(x=>x.trim()).filter(x=>x!=='');
+    this.articleForm['paragraph'] = this.articleForm.body.split('\n').map(x=>x.trim()).filter(x=>x!=='');
     this.http.updateArticle({id:this.articleForm['id'], 'article': this.articleForm}).subscribe(info=>{
       if(info['success']) {
        this.addArticle = false;

@@ -58,6 +58,31 @@
                                       [(ngModel)]="articleForm.body"
                                        #body="ngModel"></textarea>
                               </div>
+
+                              <div class="form-group">
+                                    <label for="description">KeyWords</label>
+                                    <textarea 
+                                        class="form-control" 
+                                        id="description" 
+                                        placeholder="Описание" 
+                                        rows="1"
+                                        name="keywordsString"
+                                        [(ngModel)]="articleForm.keywordsString"
+                                         #keywordsString="ngModel"></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <textarea 
+                                            class="form-control" 
+                                            id="description" 
+                                            placeholder="Описание" 
+                                            rows="5"
+                                            
+                                            name="description"
+                                            [(ngModel)]="articleForm.description"
+                                             #description="ngModel"></textarea>
+                                    </div>
                               
                           </form>
                         </div>

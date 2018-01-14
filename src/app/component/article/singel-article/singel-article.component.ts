@@ -23,22 +23,21 @@ export class SingelArticleComponent implements OnInit {
         private title: Title,
       
       ) {      
-        this.title.setTitle('My Spiffy Home Page');
-    let url = this.router.snapshot.params['url'];
-    this.http.singlArticle({url:url}).subscribe(article=>{
+        let url = this.router.snapshot.params['url'];
+        this.http.singlArticle({url:url}).subscribe(article=>{
       if(article['success']) {
       this.article = article['article'];
       this.seo.changeTitle(this.article.title);
-      this.seo.addMetaKeys(this.article['keywrods']);
-    }
+      this.seo.addMetaKeys(this.article['keywordsString']);
+      this.seo.addMetaDescription(this.article['description']);
+      this.seo.addFbMeta(article['article']["title"], article['article']['description'], article['article']['img'], window.location.href);
+      }
 
     })
        }
 
   ngOnInit() {
-    window.scrollTo(0, 0)
-
-    
+    window.scrollTo(0, 0) 
   }
 
 }
