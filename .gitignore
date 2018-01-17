@@ -3,14 +3,15 @@
 # compiled output
 /tmp
 /out-tsc
-/src
-/e2e
+
 
 # dependencies
 /node_modules
 
 # IDEs and editors
 /.idea
+/src
+/e2e
 .project
 .classpath
 .c9/

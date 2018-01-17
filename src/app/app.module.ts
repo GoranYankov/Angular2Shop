@@ -12,7 +12,6 @@ import { RouterModule } from '@angular/router';
 import {routes} from './app.routing';
 import { ProductComponentModule } from './component/product/product.module';
 import { ArticleComponent } from './component/article/article.component';
-import { ContactComponent } from './component/contact/contact.component';
 import { FaqComponent } from './component/faq/faq.component';
 import { PolesnoComponent } from './component/polesno/polesno.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -35,7 +34,6 @@ import { NgHttpLoaderServicesModule } from 'ng-http-loader/services/ng-http-load
 @NgModule({
   declarations: [
     AppComponent,
-    ContactComponent,
     FaqComponent,
     PolesnoComponent,
     LastStepOrderComponent,
