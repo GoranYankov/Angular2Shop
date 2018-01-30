@@ -3,6 +3,7 @@ import { AuthServices } from '../../../core/service/auth.service';
 import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages/module/flash-messages.service';
 import { Location } from '@angular/common';
+import {delivaryTo} from './../../../config/delivary.config'
 
 @Component({
   selector: 'header',
@@ -13,6 +14,7 @@ export class HeaderComponent implements OnInit {
   isOrder = false;
   mobile:Boolean = false;
   elementClass = 'hidden'
+  delivary = delivaryTo;
   constructor(public authService: AuthServices,
              private router: Router, 
              private msg: FlashMessagesService,

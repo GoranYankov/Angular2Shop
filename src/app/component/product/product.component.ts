@@ -5,6 +5,7 @@ import { FastOrderFormModel } from '../../core/models/input-models/fast-order-fo
 import { OrderServices } from '../../core/service/order.service';
 import { FlashMessagesService } from 'angular2-flash-messages/module/flash-messages.service';
 import { SeoServices } from '../../core/service/seo.service';
+import {delivaryTo} from '../../config/delivary.config'
 
 
 @Component({
@@ -16,12 +17,14 @@ export class ProductComponent implements OnInit {
 
   findProduct:Boolean = false;
   product;
+  realPrice:Number;
   qty = 1;
   description:Boolean = true;
   content:Boolean = false;
   upotreba:Boolean = false;
   orderForm: FastOrderFormModel;
-  delviaryPrice = 5;
+  delviaryPrice = delivaryTo.address;
+  phoneNumber:String;
   orderPrice;
   ClassContent = 'no-active';
   ClassUpotreba = 'no-active';
@@ -40,6 +43,7 @@ export class ProductComponent implements OnInit {
       if(product['success']) {
           this.findProduct = true;
           this.product = product['product'];
+          this.realPrice = this.product.price;
           this.seo.changeTitle(this.product['type'] + ' ' + this.product['title'] + ' - Магазин Красота и Здраве')
           this.seo.addFbMeta(product['product']["type"] + ' ' + product['product']["title"] +  ' - Магазин Красота и Здраве' , product['product']['description'], product['product']['img'], window.location.href);    
           this.orderPrice = this.product['price'] + this.delviaryPrice;
@@ -50,20 +54,34 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     window.scrollTo(0, 0)
+    this.phoneNumber = delivaryTo['phone'];
     this.orderForm = new FastOrderFormModel('','','','','Адрес','');
-   
   }
 
   incrase() {
     if(this.qty !== 10) {
       this.qty = this.qty + 1;
+      this.product.price = Number(this.realPrice) * this.qty ;
     }
   }
 
   decrase() {
     if(this.qty !== 1) {
     this.qty = this.qty - 1;
+    this.product.price = Number(this.realPrice) * this.qty ;
+
     }
+  }
+
+  onChange(e) {
+    if(e.target.value < 1) {
+      this.qty = 1;
+    } else if(e.target.value > 10) {
+      this.qty = 10;
+    } else {
+      this.qty = e.target.value ;
+    }
+    this.product.price = Number(this.realPrice) * this.qty ;
   }
 
   onClick(e) {
@@ -95,9 +113,9 @@ export class ProductComponent implements OnInit {
 
   getPruce(e) {
     if(e.target.value === "Адрес") {
-      this.delviaryPrice = 5;
+      this.delviaryPrice = delivaryTo.address;
     } else {
-      this.delviaryPrice = 4.5;
+      this.delviaryPrice = delivaryTo.office;
     }
     this.orderPrice = this.product['price'] + this.delviaryPrice;
   }
@@ -145,6 +163,8 @@ export class ProductComponent implements OnInit {
   }
 }
 
+
+
   onClickButtonBy(e) {
     this.order.getIp().subscribe(data=>{
       let product = {
@@ -152,7 +172,6 @@ export class ProductComponent implements OnInit {
         qty: this.qty},
         userIp:data.ip,
       }
-      
       if(sessionStorage.getItem('order')) {
           this.order.updateCart({id:sessionStorage.getItem('order'), product:product})
             .subscribe(data=>{

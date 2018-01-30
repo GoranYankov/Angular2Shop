@@ -32,6 +32,7 @@ export class NewProductComponent implements OnInit {
       window.scrollTo(0, 0)
       })
   }
+  
 
   @Output() changeView: EventEmitter<any> = new EventEmitter();
 
@@ -56,7 +57,7 @@ export class NewProductComponent implements OnInit {
   onEdit() {
     this.addProduct = !this.addProduct;
     if(this.addProduct === true) {
-      this.productForm = new NewProductModel('', '', '', 0, 0, 0, '', '', '', true, '', '', '')
+      this.productForm = new NewProductModel('', '', '', 0, 0, 0, '', '', '', true, '', '', '', '', '', '', 0)
     }
   }
 
@@ -90,7 +91,12 @@ export class NewProductComponent implements OnInit {
             product.onFirstPage,
             product.url,
             product.upotreba, 
-            product.keywordsString);
+            product.keywordsString,
+            product.country,
+            product.shortDescription,
+            product.status,
+            product.oldPrice
+          );
        this.productForm['id'] = e.target.id;
       }
     }

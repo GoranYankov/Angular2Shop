@@ -37,6 +37,7 @@ export class CartComponent implements OnInit {
   loadeDate() {
     this.totalPrice = 0;
     this.http.getCart({id:sessionStorage.order}).subscribe(info=>{
+      console.log(info);
       this.cart = info['product'];
       if(this.cart.length === 0) {
         sessionStorage.clear()

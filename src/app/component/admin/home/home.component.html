@@ -36,9 +36,12 @@
                       <div class="col-xs-6 col-md-6">
                           <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-signal"></span> <br/>Поръчки днес {{numberOfOrders}} </a>
                           <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>Поръчки този месец {{numberOfMonthOrders}}</a>
+                          <a [routerLink]="['msg']" [class]="hasNewMsg" role="button"><span class="glyphicon glyphicon-comment"></span> <br/>Нови Съобщение {{msgs}}</a>
+        
                         <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-picture"></span> <br/>Photos</a>
                         <a href="#" class="btn btn-primary btn-lg" role="button"><span class="glyphicon glyphicon-tag"></span> <br/>Tags</a>
                       </div>
+
 
                   </div>
                   <a href="#" class="btn btn-success btn-lg btn-block" role="button"><span class="glyphicon glyphicon-globe"></span>Регистрирай нова поръчка</a>

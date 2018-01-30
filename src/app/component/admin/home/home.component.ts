@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { OrderServices } from '../../../core/service/order.service';
+import { MsgServices } from '../../../core/service/msg.service';
 
 @Component({
   selector: 'admin-home',
@@ -10,19 +11,33 @@ import { OrderServices } from '../../../core/service/order.service';
 export class HomeComponent implements OnInit {
   numberOfOrders = 0;
   numberOfMonthOrders = 0;
-  constructor(private http:OrderServices) { }
+  msgs = 0;
+  hasNewMsg = 'btn btn-primary btn-lg';
+  constructor(private http:OrderServices, private msg: MsgServices) { }
 
   ngOnInit() {
     window.scrollTo(0, 0)
     this.allOrdersToday();
   }
 
+
   allOrdersToday() {
     this.http.allOrdersToday().subscribe(orders=>{    
-     this.numberOfOrders = orders['orders'].length;
-     this.http.allOrdersThisMonth().subscribe(monthOrders=>{
-      this.numberOfMonthOrders = monthOrders['orders'].length;
-     })
+          this.numberOfOrders = orders['orders'].length;
+           this.http.allOrdersThisMonth().subscribe(monthOrders=>{
+                this.numberOfMonthOrders = monthOrders['orders'].length;
+                this.msg.getMsgCount().subscribe(msgCount => {
+                  if(msgCount['success']) {
+                    this.msgs = msgCount['count'];
+                    if(this.msgs !== 0) {
+                    this.hasNewMsg = 'btn btn-danger btn-lg';
+                    } else  {
+                      this.hasNewMsg = 'btn btn-primary btn-lg';
+                    }
+                    console.log(msgCount["count"]);
+                  } 
+                })
+             })
     })
   }
 

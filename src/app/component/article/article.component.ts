@@ -9,6 +9,7 @@ export class ArticleComponent implements OnInit {
   numOfArticle : Number;
   currentPage = 1;
   articleByPage = article;
+  sideArticle:Array<Object>;
   totalNumOfPage;
   articles : Array < Object >;
   endPage : Number;
@@ -30,13 +31,17 @@ export class ArticleComponent implements OnInit {
           this.numOfArticle=result['count'];
           this.setPaginator()
           this.loadeArticle();
+          this.loadeSideArticle();
+
+
         }
       }) 
   }
 
   setCurrentPage(page) {
     this.currentPage = page;
-    this.loadeArticle()
+    this.loadeArticle();
+    this.loadeSideArticle();
     this.setPaginator();
   }
 
@@ -78,10 +83,22 @@ export class ArticleComponent implements OnInit {
     window.scrollTo(0, 0)
     this.http.getNumOfArticle({"skip":(this.currentPage-1)*this.articleByPage.articlePageNum,"numOfArticle":this.articleByPage.articlePageNum})
               .subscribe(data=>{
-                console.log(data);
                    this.articles = data['articles']
                    this.setPaginator();
     })
   }
 
+
+  loadeSideArticle() {
+    window.scrollTo(0, 0)
+
+    console.log(this.currentPage);
+    this.http.getNumOfArticle({"skip":this.currentPage*this.articleByPage.articlePageNum,"numOfArticle":this.articleByPage.articlePageNum})
+              .subscribe(data=>{
+                console.log(data);
+                   this.sideArticle = data['articles']
+                   this.setPaginator();
+    })
+
+  }
 }

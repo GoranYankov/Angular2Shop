@@ -62,6 +62,7 @@ export class ProductServices {
             })
         return this.http.post(httpUrl, body, {headers:headers});
     }
+
     updateProduct(body):Observable<Object> {
         let token = window.localStorage.getItem('token');
         let httpUrl:string = url.http + url.updateProduct;
@@ -72,4 +73,20 @@ export class ProductServices {
         return this.http.post(httpUrl, body, {headers:headers});
     }
 
+    getProductByTag(body):Observable<Object> {
+        let httpUrl:string = url.http + url.getProductByTag;
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json'
+            })
+        return this.http.post(httpUrl, body, {headers:headers});
+    }
+
+    randomProduct(body):Observable<Object> {
+        let httpUrl:string = url.http + url.randomProduct;
+        
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json'
+            })
+        return this.http.post(httpUrl, body, {headers:headers});
+    }
 }

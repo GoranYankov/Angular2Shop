@@ -14,6 +14,7 @@ export class SliderServices {
         let httpUrl:string = url.http + url.getSlider;
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':'http://localhost:4200'
             })
         return this.http.get(httpUrl, {headers:headers});
     }

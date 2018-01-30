@@ -18,8 +18,8 @@
               <h3>Обслужване на клиенти</h3>
               <ul class="footer-nav">
                   <li><a >Свържете се с нас</a></li>
-                  <li><a ><i class="fa fa-envelope" aria-hidden="true"></i> support@magazin-zdrave.com</a></li>
-                  <li><a ><i class="fa fa-phone" aria-hidden="true"></i> 0895 024 425</a></li>
+                  <li><a ><i class="fa fa-envelope" aria-hidden="true"></i> {{delivary.mail}}</a></li>
+                  <li><a ><i class="fa fa-phone" aria-hidden="true"></i> {{delivary.phone}}</a></li>
               </ul>
           </div>
           <div class="col-sm-3">
@@ -32,6 +32,7 @@
       </div>
       <div class="row">
           <div class="col-sm-6 col-sm-offset-6 text-right nopadding">
+              <br>
                 <a [routerLink]="['']">
               <img class="img-responsive" src="./assets/imges/zdrave-logo.png">
                 </a>

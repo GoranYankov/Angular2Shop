@@ -7,7 +7,7 @@
     "start": "ng serve",
     "build:universal": "npm run build:client-and-server-bundles && npm run webpack:server",
     "serve:universal": "node dist/server.js",
-    "build:client-and-server-bundles": "ng build --prod --base-href '/dist/browser' && ng build --prod --base-href '/dist/browser' --app 1 --output-hashing=false",
+    "build:client-and-server-bundles": "ng build --prod && ng build --prod --app 1 --output-hashing=false",
     "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
     "test": "ng test",
     "lint": "ng lint",

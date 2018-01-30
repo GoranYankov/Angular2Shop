@@ -13,5 +13,9 @@ export class NewProductModel {
         public url:String,
         public upotreba:String,
         public keywordsString: String,
+        public country: String,
+        public shortDescription:String,
+        public status:String,
+        public oldPrice: Number,
     ) {}
 }

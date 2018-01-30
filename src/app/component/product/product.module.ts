@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
 @NgModule({
-    declarations:[...ProductComponents],
+    declarations:[...ProductComponents ],
     imports:[CommonModule, FormsModule, FlashMessagesModule],
     exports:[]
 })

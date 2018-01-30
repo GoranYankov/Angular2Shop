@@ -29,13 +29,15 @@ import { DelivaryComponent } from './component/delivary/delivary.component';
 import { PlastaneComponent } from './component/plastane/plastane.component';
 import { NgHttpLoaderComponentsModule } from 'ng-http-loader/components/ng-http-loader-components.module';
 import { NgHttpLoaderServicesModule } from 'ng-http-loader/services/ng-http-loader-services.module';
+import { ContactComponentModule } from './component/contact/contact.module';
+import { BmiComponent } from './component/polesno/bmi/bmi.component';
+import { PolesnoComponentModule } from './component/polesno/polesno.module';
  
 
 @NgModule({
   declarations: [
     AppComponent,
     FaqComponent,
-    PolesnoComponent,
     LastStepOrderComponent,
     UsloviqComponent,
     DelivaryComponent,
@@ -60,6 +62,8 @@ import { NgHttpLoaderServicesModule } from 'ng-http-loader/services/ng-http-load
     NgHttpLoaderModule,
     NgHttpLoaderServicesModule,
     NgHttpLoaderComponentsModule,
+    ContactComponentModule,
+    PolesnoComponentModule
   ],
   providers: [],
   bootstrap: [AppComponent]

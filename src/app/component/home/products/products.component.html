@@ -15,7 +15,8 @@
                         {{product.type}} <br/> {{product.title}}
                     </a>
                 </h3>
-                <p class="single-price">{{product.price}} лв.</p>
+                <p class="single-price">{{product.price |  number:'1.2-5'}} лв.</p>
+
                 <p class="button">
                     <a [routerLink]="['product', product.url]" class="btn btn-default button-price">
                         <i class="fa fa-shopping-cart"></i> Купи</a>

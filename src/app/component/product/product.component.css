@@ -22,3 +22,19 @@ span.danger {
     color:red;
     font-weight: bold;
 }
+
+.color {
+    color: #02af02;
+}
+
+ul {
+    list-style: none;
+}
+
+p {
+    margin-bottom: 10px;
+}
+.img {
+    text-align: center;
+    
+}
